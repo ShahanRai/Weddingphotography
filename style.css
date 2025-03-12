@@ -71,76 +71,174 @@ body {
     margin-right: 10px;
 }
 
-/* About Me Section */
-.about {
-    background: linear-gradient(to right, #000000, #434343); /* Elegant gradient background */
-    color: white;
-    padding: 50px;
+/* General Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8; /* Softer background */
     text-align: center;
+}
+
+/* Portfolio Image Hover Effect */
+.gallery img {
+    width: 100%;
+    max-width: 400px;
+    margin: 10px;
     border-radius: 10px;
-    margin: 40px auto;
-    max-width: 800px;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+    filter: brightness(1.2);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Enhanced About Me Section */
+.about {
+    background: linear-gradient(to right, #111, #333);
+    color: white;
+    padding: 80px 40px;
+    text-align: center;
+    border-radius: 15px;
+    margin: 50px auto;
+    max-width: 900px;
+    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease-in-out forwards;
 }
 
 .about h2 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-.about p {
-    font-size: 1.2rem;
-    line-height: 1.6;
-}
-
-/* Contact Me Section */
-.contact {
-    background: #222;
-    color: white;
-    padding: 50px;
-    text-align: center;
-    border-radius: 10px;
-    max-width: 800px;
-    margin: 40px auto;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-.contact h2 {
-    font-size: 2.5rem;
+    font-size: 3rem;
     margin-bottom: 20px;
     font-weight: bold;
     text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #e63946;
 }
 
+.about p {
+    font-size: 1.3rem;
+    line-height: 1.8;
+    max-width: 700px;
+    margin: auto;
+}
+
+/* Animation for About Section */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Enhanced Contact Section */
+.contact {
+    background: #1a1a1a;
+    color: white;
+    padding: 60px 40px;
+    text-align: center;
+    border-radius: 15px;
+    max-width: 900px;
+    margin: 50px auto;
+    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease-in-out;
+}
+
+.contact:hover {
+    transform: scale(1.02);
+}
+
+.contact h2 {
+    font-size: 3rem;
+    margin-bottom: 25px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #e63946;
+}
+
+/* Form Fields */
 .contact form {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.contact form input, .contact form textarea {
+.contact form input,
+.contact form textarea {
     width: 100%;
     max-width: 600px;
-    padding: 12px;
-    margin-bottom: 15px;
-    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
     border: none;
     font-size: 1rem;
+    background: #333;
+    color: white;
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1);
+    transition: box-shadow 0.3s ease-in-out, background 0.3s;
 }
 
+.contact form input:focus,
+.contact form textarea:focus {
+    outline: none;
+    background: #444;
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.5);
+}
+
+/* Contact Form Button */
 .contact form button {
-    background-color: #e63946;
+    background: linear-gradient(to right, #e63946, #d62839);
     color: white;
-    padding: 12px 20px;
+    padding: 15px 25px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 1rem;
-    transition: background 0.3s ease-in-out;
+    font-size: 1.2rem;
+    transition: background 0.3s ease-in-out, transform 0.2s;
 }
 
 .contact form button:hover {
-    background-color: #d62839;
+    background: linear-gradient(to right, #d62839, #b71c1c);
+    transform: scale(1.08);
+}
+
+/* Improve Section Spacing */
+.about, .contact {
+    padding: 70px 40px;
+    border-radius: 15px;
+    max-width: 900px;
+    margin: 60px auto;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Improve Title Spacing */
+.about h2, .contact h2 {
+    margin-bottom: 25px;
+}
+
+/* Fix Input Fields Visibility */
+.contact form input, .contact form textarea {
+    background: #222;  /* Lighter dark shade */
+    color: white;
+    border: 1px solid #444;  /* Add subtle border */
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Input Fields Hover & Focus */
+.contact form input:focus, .contact form textarea:focus {
+    border-color: #e63946;
+    background: #333;
+    box-shadow: 0px 5px 15px rgba(230, 57, 70, 0.5);
+}
+
+/* Button Enhancement */
+.contact form button {
+    padding: 16px 30px;
+    font-size: 1.3rem;
+    font-weight: bold;
 }
