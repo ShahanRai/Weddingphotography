@@ -13,8 +13,8 @@
             <a href="index.html"><img src="images/home-icon.png" alt="Home" class="nav-icon"></a>
         </div>
         <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
@@ -23,23 +23,47 @@
         <h1>Capturing Eternal Moments</h1>
     </header>
 
+    <!-- Portfolio Section (Merged Both) -->
     <section id="portfolio">
         <h2 class="section-title">Wedding Portfolio</h2>
         <div class="gallery">
-            <img src="images/portfolio1.jpg" alt="Wedding 1">
-            <img src="images/portfolio2.jpg" alt="Wedding 2">
+            <!-- Portfolio Items -->
+            <div class="portfolio-item" data-folder="clients/Shahan_Anvitha" data-count="5">
+                <img src="clients/Shahan_Anvitha/photo1.jpg" alt="Shahan & Anvitha">
+            </div>
+            <div class="portfolio-item" data-folder="clients/Another_Client" data-count="6">
+                <img src="clients/Another_Client/photo1.jpg" alt="Another Wedding">
+            </div>
         </div>
     </section>
 
-    <div class="contact">
-        <h2>Contact Me</h2>
-        <form>
-            <input type="text" placeholder="Your Name">
-            <input type="email" placeholder="Your Email">
-            <textarea placeholder="Your Message"></textarea>
-            <button type="submit">Send Message</button>
-        </form>
+    <!-- Fullscreen Modal for Portfolio Images -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <div class="modal-content">
+            <div id="modal-gallery"></div>
+        </div>
     </div>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <h2>Connect With Me</h2>
+        <div class="social-links">
+            <a href="https://www.instagram.com/YOUR_INSTAGRAM_USERNAME" target="_blank" class="instagram-btn">
+                <img src="assets/instagram-icon.png" alt="Instagram"> Instagram
+            </a>
+            <a href="https://wa.me/YOUR_WHATSAPP_NUMBER" target="_blank" class="whatsapp-btn">
+                <img src="assets/whatsapp-icon.png" alt="WhatsApp"> WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <!-- Photographer Address Section -->
+    <section class="address-section">
+        <h2>My Studio Location</h2>
+        <p>No. 134, Kamalarama, 2nd A Cross Rd, 5th Block, 2nd Stage, Naagarabhaavi, Bengaluru, Karnataka 560072</p>
+        <img src="assets/map-qr.png" alt="Scan QR for Google Maps" class="qr-code">
+    </section>
 
     <script src="script.js"></script>
 </body>
