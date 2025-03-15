@@ -165,12 +165,13 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-radius: 12px; /* Ensures rounded corners remain */
     transition: transform 0.3s ease-in-out;
 }
 
 /* Apply zoom effect to both image and text */
 .portfolio-item:hover {
-    transform: scale(1.1); /* Increases size on hover */
+    transform: scale(1.05); /* Increases size on hover */
 }
 
 /* Ensure Portfolio Images Indicate Clickability */
@@ -179,12 +180,14 @@ section {
     max-width: 400px;
     border-radius: 12px;
     cursor: pointer;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, border-radius 0.3s ease-in-out;
 }
 
-/* Enlarge Image on Hover */
+/* Enlarge Image on Hover with Rounded Corners */
 .portfolio-item:hover img {
     transform: scale(1.1);
+    border-radius: 12px; /* Keeps the rounded corners */
+    box-shadow: 0px 10px 20px rgba(255, 255, 255, 0.2);
 }
 
 /* Styling for Image Name */
