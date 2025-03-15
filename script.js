@@ -32,6 +32,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const portraitRow = document.createElement("div");
         portraitRow.classList.add("modal-row");
 
+        let loadedImages = 0;
+
         for (let i = 1; i <= count; i++) {
             let img = document.createElement("img");
             img.src = `${folderPath}/photo${i}.webp`;
@@ -41,15 +43,22 @@ document.addEventListener("DOMContentLoaded", function () {
             img.onload = function () {
                 if (img.naturalHeight > img.naturalWidth) {
                     img.classList.add("portrait");
-                    portraitRow.appendChild(img); // Add to portrait row
+                    portraitRow.appendChild(img);
                 } else {
-                    landscapeRow.appendChild(img); // Add to landscape row
+                    landscapeRow.appendChild(img);
+                }
+
+                loadedImages++;
+                if (loadedImages === count) {
+                    gallery.appendChild(landscapeRow);
+                    gallery.appendChild(portraitRow);
                 }
             };
-        }
 
-        gallery.appendChild(landscapeRow);
-        gallery.appendChild(portraitRow);
+            img.onerror = function () {
+                console.error(`Failed to load image: ${img.src}`);
+            };
+        }
     }
 
     function closeModal() {
@@ -61,9 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Close Modal on Button Click
-    document.querySelector(".close").addEventListener("click", function () {
-        closeModal();
-    });
+    document.querySelector(".close").addEventListener("click", closeModal);
 
     // Close Modal if Clicked Outside of Images
     document.getElementById("imageModal").addEventListener("click", function (event) {
@@ -71,20 +78,21 @@ document.addEventListener("DOMContentLoaded", function () {
             closeModal();
         }
     });
-});
 
-document.addEventListener("DOMContentLoaded", function () {
+    // Smooth Scroll for Anchor Links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener("click", function (e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute("href"));
             if (target) {
-                const navbarHeight = document.querySelector(".navbar").offsetHeight; // Get navbar height
+                const navbarHeight = document.querySelector(".navbar").offsetHeight;
                 const targetPosition = target.getBoundingClientRect().top + window.scrollY - navbarHeight;
                 window.scrollTo({
                     top: targetPosition,
                     behavior: "smooth",
                 });
+            } else {
+                console.warn(`Target section not found for: ${this.getAttribute("href")}`);
             }
         });
     });

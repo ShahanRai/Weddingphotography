@@ -141,8 +141,7 @@ section {
     padding: 5px 10px;
     border-radius: 8px;
     margin-top: 5px;
-    width: fit-content;
-    pointer-events: none; /* Prevents the hover effect from being triggered separately */
+    pointer-events: none;
 }
 
 /* Ensure Portfolio Images Indicate Clickability */
@@ -159,26 +158,59 @@ section {
     box-shadow: 0px 10px 20px rgba(255, 255, 255, 0.2);
 }
 
-/* Portfolio Item Clickable Effect */
+/* Portfolio Image and Text Zoom Effect */
 .portfolio-item {
+    position: relative;
+    overflow: hidden; /* Prevents overflow when zooming */
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
-    transition: transform 0.3s ease-in-out; /* Ensures smooth zoom */
+    transition: transform 0.3s ease-in-out;
 }
 
+/* Apply zoom effect to both image and text */
 .portfolio-item:hover {
-    transform: scale(1.1); /* Applies zoom to both image and text */
+    transform: scale(1.1); /* Increases size on hover */
 }
 
-.portfolio-item img {
-    border-radius: 8px;
-    display: block; /* Prevents unwanted inline spacing */
+/* Ensure Portfolio Images Indicate Clickability */
+.gallery img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
 }
 
-.portfolio-item img:hover {
-    filter: brightness(1.2);
+/* Enlarge Image on Hover */
+.portfolio-item:hover img {
+    transform: scale(1.1);
+}
+
+/* Styling for Image Name */
+.image-name {
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: transform 0.3s ease-in-out, font-size 0.3s ease-in-out;
+}
+
+/* Zoom Effect for Text */
+.portfolio-item:hover .image-name {
+    transform: translateX(-50%) scale(1.1);
+    font-size: 16px;
+}
+
+/* Remove unwanted icon behind text */
+.image-name::before {
+    content: ""; /* Removes any unexpected icons */
+    display: none;
 }
 
 /* Updated styles with fixes for double scrollbar, image resizing, and glass effect modal */
