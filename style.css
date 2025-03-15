@@ -302,102 +302,151 @@ body.modal-open {
     }
 }
 
-/* Contact Section Fix */
-.contact-section {
-    text-align: center;
-    margin-top: 40px;
+/* Container for side-by-side layout */
+.contact-location-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Space between sections */
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+/* Ensure both sections have the same glass effect */
+.contact-section, .address-section {
+    width: 45%; /* Adjust width */
+    background: rgba(255, 255, 255, 0.2); /* Uniform glass effect */
+    backdrop-filter: blur(10px);
     padding: 20px;
-    background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    width: 90%;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.contact-section h2 {
-    color: #fff;
-    margin-bottom: 15px;
-}
-
-/* Social Media Buttons - No Background */
-.social-links a {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 5px 10px; /* Reduce padding */
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    font-size: 16px;
-    transition: 0.3s;
-    background: none; /* Remove background */
-    border: none; /* Remove border */
-}
-
-/* Icon Styling */
-.social-links a img {
-    width: 24px; /* Adjust icon size */
-    height: 24px;
-}
-
-/* Instagram Button */
-.instagram-btn {
-    color: #E1306C;
-}
-
-.instagram-btn:hover {
-    text-decoration: underline;
-}
-
-/* WhatsApp Button */
-.whatsapp-btn {
-    color: #25D366;
-}
-
-.whatsapp-btn:hover {
-    text-decoration: underline;
+    text-align: center;
+    gap: 15px; /* Space between elements */
 }
 
 /* Address Section */
 .address-section {
-    text-align: center;
-    margin-top: 40px;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.1);
+    width: 45%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(15px);
+    padding: 25px;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    width: 90%;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+    text-align: center;
+    color: white;
 }
 
-.address-section h2 {
-    color: #fff;
-    margin-bottom: 10px;
+/* Ensure headings and text remain bright */
+.address-section h2, .address-section p, .address-link {
+    color: white;
+    font-weight: bold;
 }
 
-.address-section p {
-    color: rgba(255, 255, 255, 0.8);
+/* Style "View on Google Maps" link */
+.address-link {
+    color: white;
+    text-decoration: none;
     font-size: 18px;
+    padding: 10px 15px;
+    transition: all 0.3s ease-in-out;
 }
 
+/* Red hover effect matching navbar */
+.address-link:hover {
+    color: #e63946;
+    text-shadow: 0px 0px 8px rgba(230, 57, 70, 0.7);
+    transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+}
+
+/* Make QR Code and Social Links aligned */
+.address-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* QR Code */
 .qr-code {
     width: 150px;
-    margin-top: 10px;
     border-radius: 5px;
 }
 
-.address-link {
-    color: white; /* Default text color */
-    text-decoration: none; /* Remove underline */
-    font-weight: bold;
-    transition: color 0.3s ease-in-out; /* Smooth transition */
+/* Social Media Buttons */
+.social-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-top: 15px;
 }
 
-.address-link:hover {
-    color: #e63946; /* Same red color as navbar hover */
+.social-links {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    color: white; /* White text */
+    padding: 5px 10px;
+    border-radius: 8px;
+    transition: transform 0.2s ease-in-out;
+    width: auto;
+    justify-content: center;
+    background: transparent; /* Remove background color */
+}
+
+/* WhatsApp Icon */
+.whatsapp-btn img,
+.instagram-btn img {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+/* Hover Effect */
+.social-links:hover {
+    transform: scale(1.05);
+    text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.7); /* Subtle glow effect */
+}
+/* Icon Styling */
+.social-links a img {
+    width: 20px;
+    height: 20px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .address-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .social-links a {
+        width: 100%;
+    }
+}
+
+/* Ensure "Our Studio" title matches "Wedding Portfolio" */
+.address-section h2 {
+    font-size: 1.8rem; /* Same as section-title */
+    font-weight: 500;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 12px 25px;
+    border-radius: 12px;
+
+    /* Glass Effect for consistency */
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px) saturate(150%);
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
+
+    /* Improved Shadow */
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+
+    /* Center alignment */
+    text-align: center;
 }
