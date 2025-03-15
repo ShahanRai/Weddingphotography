@@ -80,8 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const target = document.querySelector(this.getAttribute("href"));
             if (target) {
                 const navbarHeight = document.querySelector(".navbar").offsetHeight; // Get navbar height
-                const targetPosition = target.getBoundingClientRect().top + window.scrollY - navbarHeight; // Adjust for fixed navbar
-
+                const targetPosition = target.getBoundingClientRect().top + window.scrollY - navbarHeight;
                 window.scrollTo({
                     top: targetPosition,
                     behavior: "smooth",
@@ -89,3 +88,4 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     });
+});
