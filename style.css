@@ -133,6 +133,18 @@ section {
     border-radius: 12px;
 }
 
+.portfolio-name {
+    font-size: 1.2rem;
+    color: #fff;
+    font-weight: 600;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 5px 10px;
+    border-radius: 8px;
+    margin-top: 5px;
+    width: fit-content;
+    pointer-events: none; /* Prevents the hover effect from being triggered separately */
+}
+
 /* Ensure Portfolio Images Indicate Clickability */
 .gallery img {
     width: 100%;
@@ -149,13 +161,24 @@ section {
 
 /* Portfolio Item Clickable Effect */
 .portfolio-item {
-    cursor: pointer;
-    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease-in-out; /* Ensures smooth zoom */
 }
 
 .portfolio-item:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.3);
+    transform: scale(1.1); /* Applies zoom to both image and text */
+}
+
+.portfolio-item img {
+    border-radius: 8px;
+    display: block; /* Prevents unwanted inline spacing */
+}
+
+.portfolio-item img:hover {
+    filter: brightness(1.2);
 }
 
 /* Updated styles with fixes for double scrollbar, image resizing, and glass effect modal */
