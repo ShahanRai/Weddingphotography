@@ -332,3 +332,14 @@ body.modal-open {
     margin-top: 10px;
     border-radius: 5px;
 }
+
+.address-link {
+    color: white; /* Default text color */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold;
+    transition: color 0.3s ease-in-out; /* Smooth transition */
+}
+
+.address-link:hover {
+    color: #e63946; /* Same red color as navbar hover */
+}

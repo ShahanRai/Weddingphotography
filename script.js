@@ -72,3 +72,20 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute("href"));
+            if (target) {
+                const navbarHeight = document.querySelector(".navbar").offsetHeight; // Get navbar height
+                const targetPosition = target.getBoundingClientRect().top + window.scrollY - navbarHeight; // Adjust for fixed navbar
+
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: "smooth",
+                });
+            }
+        });
+    });
