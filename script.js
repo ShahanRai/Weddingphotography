@@ -22,14 +22,11 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         gallery.innerHTML = ""; // Clear previous images
-        modal.style.display = "flex";
-        document.body.classList.add("modal-open"); // Prevent scrolling
-
-        const landscapeRow = document.createElement("div");
-        landscapeRow.classList.add("modal-row");
-
-        const portraitRow = document.createElement("div");
-        portraitRow.classList.add("modal-row");
+        modal.style.display = "flex"; // Show modal before animation
+        setTimeout(() => {
+            modal.classList.add("show"); // Trigger fade-in animation
+        }, 10);
+        document.body.classList.add("modal-open");
 
         let imageIndex = 1;
 
@@ -40,24 +37,14 @@ document.addEventListener("DOMContentLoaded", function () {
             img.classList.add("modal-img");
 
             img.onload = function () {
-                if (img.naturalHeight > img.naturalWidth) {
-                    img.classList.add("portrait");
-                    portraitRow.appendChild(img);
-                } else {
-                    landscapeRow.appendChild(img);
-                }
-
+                gallery.appendChild(img);
                 imageIndex++;
-                loadNextImage(); // Try loading the next image
+                loadNextImage(); // Load the next image
             };
 
             img.onerror = function () {
                 if (imageIndex === 1) {
                     console.error("No images found in the folder!");
-                } else {
-                    // Stop loading when an image fails
-                    gallery.appendChild(landscapeRow);
-                    gallery.appendChild(portraitRow);
                 }
             };
         }
@@ -68,8 +55,11 @@ document.addEventListener("DOMContentLoaded", function () {
     function closeModal() {
         const modal = document.getElementById("imageModal");
         if (modal) {
-            modal.style.display = "none";
-            document.body.classList.remove("modal-open"); // Restore scrolling
+            modal.classList.remove("show"); // Trigger fade-out animation
+            setTimeout(() => {
+                modal.style.display = "none"; // Hide modal after animation ends
+                document.body.classList.remove("modal-open");
+            }, 400); // Match CSS transition duration
         }
     }
 
@@ -102,8 +92,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+// ✅ Service Worker Registration - Fixed Syntax
 if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
+    window.addEventListener('load', function () {
         navigator.serviceWorker.register('/service-worker.js')
         .then((registration) => {
             console.log('Service Worker registered with scope:', registration.scope);
