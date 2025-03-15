@@ -8,12 +8,11 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(".portfolio-item").forEach(item => {
         item.addEventListener("click", function () {
             const folderPath = this.getAttribute("data-folder");
-            const imageCount = parseInt(this.getAttribute("data-count"), 10);
-            openGallery(folderPath, imageCount);
+            openGallery(folderPath);
         });
     });
 
-    function openGallery(folderPath, count) {
+    function openGallery(folderPath) {
         const modal = document.getElementById("imageModal");
         const gallery = document.getElementById("modal-gallery");
 
@@ -32,12 +31,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const portraitRow = document.createElement("div");
         portraitRow.classList.add("modal-row");
 
-        let loadedImages = 0;
+        let imageIndex = 1;
 
-        for (let i = 1; i <= count; i++) {
+        function loadNextImage() {
             let img = document.createElement("img");
-            img.src = `${folderPath}/photo${i}.webp`;
-            img.alt = `Image ${i}`;
+            img.src = `${folderPath}/photo${imageIndex}.webp`;
+            img.alt = `Image ${imageIndex}`;
             img.classList.add("modal-img");
 
             img.onload = function () {
@@ -48,17 +47,22 @@ document.addEventListener("DOMContentLoaded", function () {
                     landscapeRow.appendChild(img);
                 }
 
-                loadedImages++;
-                if (loadedImages === count) {
+                imageIndex++;
+                loadNextImage(); // Try loading the next image
+            };
+
+            img.onerror = function () {
+                if (imageIndex === 1) {
+                    console.error("No images found in the folder!");
+                } else {
+                    // Stop loading when an image fails
                     gallery.appendChild(landscapeRow);
                     gallery.appendChild(portraitRow);
                 }
             };
-
-            img.onerror = function () {
-                console.error(`Failed to load image: ${img.src}`);
-            };
         }
+
+        loadNextImage();
     }
 
     function closeModal() {
