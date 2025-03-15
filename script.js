@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         for (let i = 1; i <= count; i++) {
             let img = document.createElement("img");
-            img.src = `${folderPath}/photo${i}.jpg`;
+            img.src = `${folderPath}/photo${i}.webp`;
             img.alt = `Image ${i}`;
             img.classList.add("modal-img");
 
